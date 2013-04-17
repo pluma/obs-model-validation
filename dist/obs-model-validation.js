@@ -5,7 +5,7 @@ var aug = require('aug'),
 function validation() {
     var dfn, prop;
 
-    this.valid = obs.computed(function(that) {
+    this.valid = obs.computed((function(that) {
         return function() {
             for (var key in that.model.attrs) {
                 if (that[key].valid && !that[key].valid()) {
@@ -14,7 +14,7 @@ function validation() {
             }
             return true;
         };
-    }(this));
+    }(this)));
 
     for (var key in this.model.attrs) {
         dfn = this.model.attrs[key];
