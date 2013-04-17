@@ -1,0 +1,30 @@
+{
+  "name": "obs-model-validation",
+  "version": "0.1.0",
+  "description": "Observable model validation.",
+  "keywords": [
+    "observable",
+    "model",
+    "mvc",
+    "mvvm"
+  ],
+  "dependencies": {
+    "jgallen23/aug": "~0.0.5",
+    "pluma/obs": "~0.5.2"
+  },
+  "devDependencies": {
+    "mocha": "1.7.x",
+    "expect": "0.2.x",
+    "uglify-js": "1.3.x"
+  },
+  "repo": "pluma/obs-model-validation",
+  "scripts": ["dist/obs-model-validation.js"],
+  "main": "./dist/obs-model-validation.js",
+  "ignore": [
+    "**/.*",
+    "build",
+    "components",
+    "node_modules"
+  ],
+  "license": "MIT"
+}
