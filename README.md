@@ -1,6 +1,6 @@
 # Synopsis
 
-Model validation plugin for [obs-models](https://github.com/pluma/obs-models).
+Model validation plugin for [observable models](https://github.com/pluma/obs-model).
 
 # Basic usage example
 
