@@ -111,7 +111,7 @@ Defines a custom validation function the attribute value will be passed to. The 
 
 Alternatively, the function can return `null`, indicating the validation has failed tentatively, or the special value `validation.EXEMPT` (equivalent to the string value `exempt`) if the attribute should be exempted from further validation and marked valid. See below for further details.
 
-## Model.validation(fn, attrs)
+## Model.validation(validate:Function, attrs:Array)
 
 Defines a multi-attribute validation function and an array of attribute names it affects. The validation function will be passed the current value of each attribute in the order specified whenever the value of one of the attributes changes and is bound to the model instance.
 

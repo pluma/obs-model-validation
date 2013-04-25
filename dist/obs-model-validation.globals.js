@@ -1,4 +1,4 @@
-/*! obs-model-validation 0.1.0 Copyright (c) 2013 Alan Plum. MIT licensed. */
+/*! obs-model-validation 0.2.0 Copyright (c) 2013 Alan Plum. MIT licensed. */
 (function(root){var require=function(key){return root[key];},exports=(root.obs-model-validation={});
 function optionallyRequire(name, fallback) {
     try {
@@ -224,8 +224,8 @@ assimilate(validation, {
     contributeToModel: function(Model) {
         assimilate(Model, {
             validations: [],
-            validation: function(validate, props) {
-                this.validations.push({validate: validate, props: props});
+            validation: function(validate, attrs) {
+                this.validations.push({validate: validate, props: attrs});
                 return this;
             }
         });

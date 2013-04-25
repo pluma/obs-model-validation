@@ -222,8 +222,8 @@ assimilate(validation, {
     contributeToModel: function(Model) {
         assimilate(Model, {
             validations: [],
-            validation: function(validate, props) {
-                this.validations.push({validate: validate, props: props});
+            validation: function(validate, attrs) {
+                this.validations.push({validate: validate, props: attrs});
                 return this;
             }
         });
