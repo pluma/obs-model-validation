@@ -5,7 +5,38 @@ Model validation plugin for [observable models](https://github.com/pluma/obs-mod
 # Basic usage example
 
 ```javascript
-// TODO
+var User = model('User')
+    .use(validation),
+    .attr('id', {pattern: /^[1-9][0-9]+$/})
+    .attr('username', {
+        validate: function(v) {
+            return v && v.toLowerCase && v === v.toLowerCase();
+        }
+    });
+
+var admin = new User({id: 1, username: 'admin'});
+console.log(admin.valid()); // true
+console.log(admin.id(), admin.id.valid()); // 1, true
+console.log(admin.username(), admin.username.valid()); // "admin", true
+
+admin.valid.subscribe(function(valid) {
+    console.log('Admin user is now ' + (valid ? 'valid' : 'invalid'));
+});
+
+admin.id(0);
+// -> "Admin user is now invalid"
+console.log(admin.id(), admin.id.valid()); // 0, false
+console.log(admin.valid()); // false
+
+admin.id(1);
+// -> "Admin user is now valid"
+console.log(admin.id(), admin.id.valid()); // 1, true
+console.log(admin.valid()); // true
+
+admin.username('ADMIN');
+// -> "Admin user is now invalid"
+console.log(admin.username(), admin.username.valid()); // "ADMIN", false
+console.log(admin.valid()); // false
 ```
 
 # API
@@ -98,24 +129,28 @@ Every attribute receives an observable property `valid` which indicates whether 
 
 Each model instance receives an observable property `valid` which indicates whether all attributes passed validation.
 
-## Validation function return values
+# Validation function return values
 
 Attribute validation functions and mult-attribute validation functions MUST return one of the following values. If multiple validation functions exist for the same attribute (e.g. because the attribute is affected by other multi-attribute validations), they will be executed in the order they were defined on the model, with regular attribute validation functions being executed before multi-attribute validations affecting the same attribute.
 
-### `true`
+## `true`
 
 The validation was tentatively successful. Any pending validations on the same attribute will be executed normally. If this was the last validation to be executed on this attribute, the attribute will be marked as *valid*.
 
-### `false`
+## `false`
 
 The validation has failed. Any pending validations on the same attribute will be ignored and the attribue will be marked as *invalid*.
 
-### `null`
+## `null`
 
 The validation has tentatively failed. Any pending validations on the same attribute will be executed normally. If this was the last validation to be executed on this attribute, the attribute will be marked as *invalid*.
 
-### `validation.EXEMPT`
+## `validation.EXEMPT`
 
 The validation was successful. Any pending validations on the same attribute will be ignored and the attribute will be marked as *valid*.
 
 **NOTE**: The string value `exempt` can be used instead. This value is available as a property on the `validation` plugin to avoid sneaky typos.
+
+# License
+
+The MIT/Expat license
