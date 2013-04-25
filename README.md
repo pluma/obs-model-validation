@@ -45,7 +45,7 @@ console.log(admin.valid()); // false
 
 The validation plugin. Use with `Model.use(validation)`.
 
-## Model.attr(name, options)
+## Model.attr(name:String, options:Object)
 
 The `options` argument is expanded to allow defining validation requirements for each field.
 
