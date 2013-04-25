@@ -1,6 +1,6 @@
 {
   "name": "obs-model-validation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Observable model validation.",
   "keywords": [
     "observable",
@@ -9,8 +9,9 @@
     "mvvm"
   ],
   "dependencies": {
-    "obs": "~0.5.2",
-    "aug": "~0.0.5"
+    "obs": "~0.7.0",
+    "assimilate": "~0.1.0",
+    "equals": "~0.2.0"
   },
   "devDependencies": {
     "mocha": "1.7.x",
