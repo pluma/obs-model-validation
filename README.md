@@ -49,9 +49,9 @@ The validation plugin. Use with `Model.use(validation)`.
 
 The `options` argument is expanded to allow defining validation requirements for each field.
 
-### options.required (Default: false)
+### options.required:Boolean (Default: false)
 
-Defines whether the attribute is required. If the attribute is required, it will fail validation if it is set to `null` or `undefined`. If the attribute is not required, a value of `null` or `undefined` will exempt the attribute from further validation and mark it as valid.
+Defines whether the attribute is required. If `required` is set to `true`, the attribute will fail validation if its value is `null` or `undefined`. If `required` is set to `false`, the attribute will be exempt from further validation and marked valid if its value is `null` or `undefined`.
 
 ### options.values:Array
 
