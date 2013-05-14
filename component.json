@@ -1,6 +1,6 @@
 {
   "name": "obs-model-validation",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Observable model validation.",
   "keywords": [
     "observable",
@@ -10,8 +10,8 @@
   ],
   "dependencies": {
     "jkroso/equals": "0.2.0",
-    "pluma/assimilate": "0.1.0",
-    "pluma/obs": "0.7.0"
+    "jgallen23/aug": "0.1.0",
+    "pluma/obs": "0.9.1"
   },
   "repo": "pluma/obs-model-validation",
   "scripts": ["dist/obs-model-validation.js"],

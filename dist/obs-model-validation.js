@@ -1,4 +1,4 @@
-/*! obs-model-validation 0.2.0 Copyright (c) 2013 Alan Plum. MIT licensed. */
+/*! obs-model-validation 0.3.0 Copyright (c) 2013 Alan Plum. MIT licensed. @preserve */
 function optionallyRequire(name, fallback) {
     try {
         return require(name);
@@ -8,7 +8,7 @@ function optionallyRequire(name, fallback) {
 }
 
 
-var assimilate = require('assimilate'),
+var aug = require('aug'),
     equals = require('equals'),
     obs = require('obs'),
     XRegExp = optionallyRequire('xregexp', RegExp),
@@ -23,7 +23,8 @@ if (XRegExp.XRegExp) {
 
 
 function validation(model) {
-    var key, dfn, prop;
+    var props = [],
+        key, dfn, prop;
 
     model.valid = obs.computed(function() {
         for (var key in model.model.attrs) {
@@ -45,7 +46,7 @@ function validation(model) {
 
         prop.valid.watch(prop);
         model.valid.watch(prop.valid);
-        model._destructors.push(validation.createDestructor(prop, model.valid));
+        props.push(prop);
     }
 
     for (key in model.model.validations) {
@@ -69,11 +70,17 @@ function validation(model) {
     }
 
     model._destructors.push(function() {
-        for (var key in model.model.validations) {
-            var dfn = model.model.validations[key];
-            for (var i = 0; i < dfn.props.length; i++) {
-                var prop = model[dfn.props[i]];
-                for (var j = 0; j < dfn.props.length; j++) {
+        var i, prop, key, dfn, j;
+        for (i = 0; i < props.length; i++) {
+            prop = props[i];
+            prop.valid.unwatch(prop);
+            model.valid.unwatch(prop.valid);
+        }
+        for (key in model.model.validations) {
+            dfn = model.model.validations[key];
+            for (i = 0; i < dfn.props.length; i++) {
+                prop = model[dfn.props[i]];
+                for (j = 0; j < dfn.props.length; j++) {
                     if (i === j) {
                         continue;
                     }
@@ -84,7 +91,7 @@ function validation(model) {
     });
 }
 
-assimilate(validation, {
+aug(validation, {
     EXEMPT: 'exempt',
     createValidator: function(dfn, prop) {
         var validations = [];
@@ -192,7 +199,7 @@ assimilate(validation, {
             validations.push(dfn.validate);
         }
 
-        return assimilate(function() {
+        return aug(function() {
             var value = prop(),
                 result = true;
 
@@ -214,14 +221,8 @@ assimilate(validation, {
             return dfn.validate.apply(model, values);
         };
     },
-    createDestructor: function(prop, valid) {
-        return function() {
-            prop.valid.unwatch(prop);
-            valid.unwatch(prop.valid);
-        };
-    },
     contributeToModel: function(Model) {
-        assimilate(Model, {
+        aug(Model, {
             validations: [],
             validation: function(validate, attrs) {
                 this.validations.push({validate: validate, props: attrs});
@@ -240,4 +241,4 @@ assimilate(validation, {
     }
 });
 
-exports.validation = validation;
+module.exports = validation;
