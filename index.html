@@ -1,39 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>obs-model-validation by pluma</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="obs-model-validation : validation plugin for observable models" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>obs-model-validation</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>obs-model-validation</h1>
-        <p>Validation plugin for observable models.</p>
-        <p class="view"><a href="https://github.com/pluma/obs-model-validation">View the Project on GitHub <small>pluma/obs-model-validation</small></a></p>
-        <ul>
-          <li><a href="https://github.com/pluma/obs-model-validation/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/pluma/obs-model-validation/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/pluma/obs-model-validation">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>Synopsis</h1>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/pluma/obs-model-validation">View on GitHub</a>
+
+          <h1 id="project_title">obs-model-validation</h1>
+          <h2 id="project_tagline">validation plugin for observable models</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pluma/obs-model-validation/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pluma/obs-model-validation/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="synopsis" class="anchor" href="#synopsis"><span class="octicon octicon-link"></span></a>Synopsis</h1>
 
 <p>Model validation plugin for <a href="https://github.com/pluma/obs-model">observable models</a>.</p>
 
-<h1>Basic usage example</h1>
+<h1>
+<a name="basic-usage-example" class="anchor" href="#basic-usage-example"><span class="octicon octicon-link"></span></a>Basic usage example</h1>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">model</span><span class="p">(</span><span class="s1">'User'</span><span class="p">)</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">model</span><span class="p">(</span><span class="s1">'User'</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">validation</span><span class="p">),</span>
     <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="p">{</span><span class="nx">pattern</span><span class="o">:</span> <span class="sr">/^[1-9][0-9]+$/</span><span class="p">})</span>
     <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'username'</span><span class="p">,</span> <span class="p">{</span>
@@ -67,79 +73,96 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">admin</span><span class="p">.</span><span class="nx">valid</span><span class="p">());</span> <span class="c1">// false</span>
 </pre></div>
 
-<h1>API</h1>
+<h1>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h1>
 
-<h2>validation</h2>
+<h2>
+<a name="validation" class="anchor" href="#validation"><span class="octicon octicon-link"></span></a>validation</h2>
 
 <p>The validation plugin. Use with <code>Model.use(validation)</code>.</p>
 
-<h2>Model.attr(name:String, options:Object)</h2>
+<h2>
+<a name="modelattrnamestring-optionsobject" class="anchor" href="#modelattrnamestring-optionsobject"><span class="octicon octicon-link"></span></a>Model.attr(name:String, options:Object)</h2>
 
 <p>The <code>options</code> argument is expanded to allow defining validation requirements for each field.</p>
 
-<h3>options.required:Boolean (Default: false)</h3>
+<h3>
+<a name="optionsrequiredboolean-default-false" class="anchor" href="#optionsrequiredboolean-default-false"><span class="octicon octicon-link"></span></a>options.required:Boolean (Default: false)</h3>
 
 <p>Defines whether the attribute is required. If <code>required</code> is set to <code>true</code>, the attribute will fail validation if its value is <code>null</code> or <code>undefined</code>. If <code>required</code> is set to <code>false</code>, the attribute will be exempt from further validation and marked valid if its value is <code>null</code> or <code>undefined</code>.</p>
 
-<h3>options.values:Array</h3>
+<h3>
+<a name="optionsvaluesarray" class="anchor" href="#optionsvaluesarray"><span class="octicon octicon-link"></span></a>options.values:Array</h3>
 
 <p>Defines an array of possible values that will exempt the attribute from further validation (resulting in it being marked as valid without having to pass any further validations defined on the attribute).</p>
 
 <p><strong>NOTE</strong>: Uses <a href="https://github.com/jkroso/equals/tree/0.2.0">jkroso's equals 0.2.0</a> for value comparison.</p>
 
-<h3>options.type</h3>
+<h3>
+<a name="optionstype" class="anchor" href="#optionstype"><span class="octicon octicon-link"></span></a>options.type</h3>
 
 <p>Defines a type or an array of types the attribute value is expected to match. A type can be defined either as the string return value of a <code>typeof</code> check, a constructor function the value is expected to be an <code>instanceof</code> or the special string value <code>integer</code> which will match any whole <code>number</code> (including <code>Infinity</code>).</p>
 
 <p>If the attribute value does not match any of the expected types, the attribute will fail validation.</p>
 
-<h3>options.lengthRange:Integer</h3>
+<h3>
+<a name="optionslengthrangeinteger" class="anchor" href="#optionslengthrangeinteger"><span class="octicon octicon-link"></span></a>options.lengthRange:Integer</h3>
 
 <p>Defines a range the length of the attribute value is expected to match. If the value has no <code>length</code> property or the value of its <code>length</code> property is not a <code>number</code>, it will always fail this validation.</p>
 
-<h4>options.lengthRange.min:Integer</h4>
+<h4>
+<a name="optionslengthrangemininteger" class="anchor" href="#optionslengthrangemininteger"><span class="octicon octicon-link"></span></a>options.lengthRange.min:Integer</h4>
 
 <p>Defines the expected minimum length of the attribute value. If the length of the attribute value is less than <code>min</code>, it will fail validation.</p>
 
-<h4>options.lengthRange.max:Integer</h4>
+<h4>
+<a name="optionslengthrangemaxinteger" class="anchor" href="#optionslengthrangemaxinteger"><span class="octicon octicon-link"></span></a>options.lengthRange.max:Integer</h4>
 
 <p>Defines the expected maximum length of the attribute value. If the length of the attribute value is greater than <code>max</code>, it will fail validation.</p>
 
-<h3>options.valueRange</h3>
+<h3>
+<a name="optionsvaluerange" class="anchor" href="#optionsvaluerange"><span class="octicon octicon-link"></span></a>options.valueRange</h3>
 
 <p>Defines a range the attribute value is expected to match. If the value is not a <code>number</code>, it will always fail this validation.</p>
 
-<h4>options.valueRange.min:Number and options.valueRange.minExclusive:Boolean</h4>
+<h4>
+<a name="optionsvaluerangeminnumber-and-optionsvaluerangeminexclusiveboolean" class="anchor" href="#optionsvaluerangeminnumber-and-optionsvaluerangeminexclusiveboolean"><span class="octicon octicon-link"></span></a>options.valueRange.min:Number and options.valueRange.minExclusive:Boolean</h4>
 
 <p>Defines the expected minimum attribute value. If the attribute value is less than <code>min</code>, it will fail validation. If <code>minExclusive</code> is set to <code>true</code>, the attribute value will also fail if it is equal to <code>min</code>.</p>
 
-<h4>options.valueRange.max:Number and options.valueRange.maxExclusive:Boolean</h4>
+<h4>
+<a name="optionsvaluerangemaxnumber-and-optionsvaluerangemaxexclusiveboolean" class="anchor" href="#optionsvaluerangemaxnumber-and-optionsvaluerangemaxexclusiveboolean"><span class="octicon octicon-link"></span></a>options.valueRange.max:Number and options.valueRange.maxExclusive:Boolean</h4>
 
 <p>Defines the expected maximum attribute value. If the attribute value is greater than <code>max</code>, it will fail validation. If <code>maxExclusive</code> is set to <code>true</code>, the attribute value will also fail if it is equal to <code>max</code>.</p>
 
-<h4>options.valueRange.step:Number</h4>
+<h4>
+<a name="optionsvaluerangestepnumber" class="anchor" href="#optionsvaluerangestepnumber"><span class="octicon octicon-link"></span></a>options.valueRange.step:Number</h4>
 
 <p>Defines a number the attribute value is expected to be a multiple of, offset by the smallest possible integer matching the <code>min</code> and <code>minExclusive</code> requirements, or <code>0</code> if <code>min</code> is not set.</p>
 
 <p>For example: if <code>step</code> is set to <code>2</code> and <code>min</code> is set to <code>1</code> (<code>minExclusive</code> is not set or is set to <code>false</code>), the attribute value is expected to match <code>x * 2 + 1</code>, i.e. <code>1, 3, 5, 7, …</code>.</p>
 
-<h4>options.valueRange.multipleOf:Number</h4>
+<h4>
+<a name="optionsvaluerangemultipleofnumber" class="anchor" href="#optionsvaluerangemultipleofnumber"><span class="octicon octicon-link"></span></a>options.valueRange.multipleOf:Number</h4>
 
 <p>Defines a number the attribute value is expected to be a multiple of (offset by <code>0</code>, rather than <code>min</code>).</p>
 
-<h3>options.pattern:RegExp</h3>
+<h3>
+<a name="optionspatternregexp" class="anchor" href="#optionspatternregexp"><span class="octicon octicon-link"></span></a>options.pattern:RegExp</h3>
 
 <p>A regular expression the attribute value is expected to be tested successfully against. If <code>pattern</code> is a string, it will be converted into a regular expression when the model instance is created. If <a href="https://github.com/slevithan/xregexp">XRegExp</a> is available, string values will be converted using that library instead.</p>
 
 <p><strong>NOTE</strong>: Although <code>pattern</code> SHOULD be set to a regular expression or a full string representation of a regular expression, any object that has a <code>test</code> method should behave as expected.</p>
 
-<h3>options.validate:Function</h3>
+<h3>
+<a name="optionsvalidatefunction" class="anchor" href="#optionsvalidatefunction"><span class="octicon octicon-link"></span></a>options.validate:Function</h3>
 
 <p>Defines a custom validation function the attribute value will be passed to. The function will be bound to the model instance and should return <code>false</code> if the value has failed validation or <code>true</code> if the validation was successful.</p>
 
 <p>Alternatively, the function can return <code>null</code>, indicating the validation has failed tentatively, or the special value <code>validation.EXEMPT</code> (equivalent to the string value <code>exempt</code>) if the attribute should be exempted from further validation and marked valid. See below for further details.</p>
 
-<h2>Model.validation(validate:Function, attrs:Array)</h2>
+<h2>
+<a name="modelvalidationvalidatefunction-attrsarray" class="anchor" href="#modelvalidationvalidatefunction-attrsarray"><span class="octicon octicon-link"></span></a>Model.validation(validate:Function, attrs:Array)</h2>
 
 <p>Defines a multi-attribute validation function and an array of attribute names it affects. The validation function will be passed the current value of each attribute in the order specified whenever the value of one of the attributes changes and is bound to the model instance.</p>
 
@@ -149,46 +172,63 @@
 
 <p>The validation function should return <code>true</code>, <code>false</code>, <code>null</code> or <code>validation.EXEMPT</code> (see below).</p>
 
-<h2>Model#[attrName].valid</h2>
+<h2>
+<a name="modelattrnamevalid" class="anchor" href="#modelattrnamevalid"><span class="octicon octicon-link"></span></a>Model#[attrName].valid</h2>
 
 <p>Every attribute receives an observable property <code>valid</code> which indicates whether the attribute value passed validation.</p>
 
-<h2>Model#valid</h2>
+<h2>
+<a name="modelvalid" class="anchor" href="#modelvalid"><span class="octicon octicon-link"></span></a>Model#valid</h2>
 
 <p>Each model instance receives an observable property <code>valid</code> which indicates whether all attributes passed validation.</p>
 
-<h1>Validation function return values</h1>
+<h1>
+<a name="validation-function-return-values" class="anchor" href="#validation-function-return-values"><span class="octicon octicon-link"></span></a>Validation function return values</h1>
 
 <p>Attribute validation functions and mult-attribute validation functions MUST return one of the following values. If multiple validation functions exist for the same attribute (e.g. because the attribute is affected by other multi-attribute validations), they will be executed in the order they were defined on the model, with regular attribute validation functions being executed before multi-attribute validations affecting the same attribute.</p>
 
-<h2><code>true</code></h2>
+<h2>
+<a name="true" class="anchor" href="#true"><span class="octicon octicon-link"></span></a><code>true</code>
+</h2>
 
 <p>The validation was tentatively successful. Any pending validations on the same attribute will be executed normally. If this was the last validation to be executed on this attribute, the attribute will be marked as <em>valid</em>.</p>
 
-<h2><code>false</code></h2>
+<h2>
+<a name="false" class="anchor" href="#false"><span class="octicon octicon-link"></span></a><code>false</code>
+</h2>
 
 <p>The validation has failed. Any pending validations on the same attribute will be ignored and the attribue will be marked as <em>invalid</em>.</p>
 
-<h2><code>null</code></h2>
+<h2>
+<a name="null" class="anchor" href="#null"><span class="octicon octicon-link"></span></a><code>null</code>
+</h2>
 
 <p>The validation has tentatively failed. Any pending validations on the same attribute will be executed normally. If this was the last validation to be executed on this attribute, the attribute will be marked as <em>invalid</em>.</p>
 
-<h2><code>validation.EXEMPT</code></h2>
+<h2>
+<a name="validationexempt" class="anchor" href="#validationexempt"><span class="octicon octicon-link"></span></a><code>validation.EXEMPT</code>
+</h2>
 
 <p>The validation was successful. Any pending validations on the same attribute will be ignored and the attribute will be marked as <em>valid</em>.</p>
 
 <p><strong>NOTE</strong>: The string value <code>exempt</code> can be used instead. This value is available as a property on the <code>validation</code> plugin to avoid sneaky typos.</p>
 
-<h1>License</h1>
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>The MIT/Expat license</p>
       </section>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/pluma">pluma</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">obs-model-validation maintained by <a href="https://github.com/pluma">pluma</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
